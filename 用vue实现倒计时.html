@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script src="./node_modules/vue/dist/vue.js"></script>
+  <script src="./node_modules/vuex/dist/vuex.js"></script>
+
+  <script>
+   //实例化仓库
+   const store=new Vuex.Store({
+    //操作数据都要经过store
+    //添加严格模式
+    strict:true,
+
+    state:{
+      num:1000
+    },
+    mutations:{
+      //第一个参数永远都是state
+      updateNum(state,upload){
+        state.num=upload.val;
+      }
+    }
+   })
+
+   //获取数据
+   console.log(store.state.num);
+
+   //修改数据
+  //  store.state.num=2000
+
+  //严格模式下 需要用commit触发
+  store.commit('updateNum',{
+    val:888
+  })
+  </script>
+</body>
+</html>
